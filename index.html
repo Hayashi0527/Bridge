@@ -15,8 +15,12 @@
         .glass-card-dark { background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.7); }
         .calendar-grid-wide { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
         @media (min-width: 640px) { .calendar-grid-wide { gap: 10px; } }
-        .badge-pickup { background-color: rgba(30, 58, 138, 0.6); color: #93c5fd; border-left: 3px solid #60a5fa; }
-        .badge-devanning { background-color: rgba(6, 78, 59, 0.7); color: #6ee7b7; border-left: 3px solid #10b981; }
+        
+        /* ⭐️ 强烈对比度的 20GP 与 40GP 专属样式 */
+        /* 20GP (小柜)：亮黄暖色调，极强目视感 */
+        .badge-20gp { background-color: #f59e0b; color: #0f172a; border: 1px solid #fbbf24; }
+        /* 40GP (大柜)：高亮冰蓝冷色调 */
+        .badge-40gp { background-color: rgba(14, 165, 233, 0.35); color: #38bdf8; border: 1px solid #0284c7; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-blue-500 selection:text-white pb-10">
@@ -50,7 +54,7 @@
         </div>
     </header>
 
-    <!-- Main Content Container (全自动适配电脑/平板/手机) -->
+    <!-- Main Content Container -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8">
 
         <!-- 1. 今日实时透视板 -->
@@ -128,7 +132,7 @@
                     <div class="p-2 sm:p-2.5 bg-blue-500/20 text-blue-400 rounded-xl sm:rounded-2xl border border-blue-500/30"><i data-lucide="calendar" class="w-5 h-5 sm:w-6 sm:h-6"></i></div>
                     <div>
                         <h2 class="font-extrabold text-white text-base sm:text-lg tracking-wide" id="i18n-cal-title">自社车队派送/提柜日历</h2>
-                        <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5" id="i18n-cal-subtitle">红字表示日本法定祝日 | 外包车队不在此日历显示</p>
+                        <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5" id="i18n-cal-subtitle">红字表示日本法定祝日</p>
                     </div>
                 </div>
 
@@ -139,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="min-w-[600px] sm:min-w-0">
+            <div class="min-w-[650px] sm:min-w-0">
                 <div class="grid grid-cols-7 text-center font-extrabold text-[11px] sm:text-xs text-slate-400 py-2.5 bg-slate-900/60 rounded-xl sm:rounded-2xl border border-slate-800 mb-2.5">
                     <div class="text-rose-400" id="i18n-week-0">周日 (日)</div>
                     <div id="i18n-week-1">周一 (月)</div>
@@ -172,7 +176,7 @@
                 </div>
             </div>
 
-            <div class="min-w-[600px] sm:min-w-0">
+            <div class="min-w-[650px] sm:min-w-0">
                 <div class="grid grid-cols-7 text-center font-extrabold text-[11px] sm:text-xs text-slate-400 py-2.5 bg-slate-900/60 rounded-xl sm:rounded-2xl border border-slate-800 mb-2.5">
                     <div class="text-rose-400" id="i18n-devan-week-0">周日 (日)</div>
                     <div id="i18n-devan-week-1">周一 (月)</div>
@@ -205,7 +209,7 @@
         </div>
     </div>
 
-    <!-- Modal: Pure Devanning Detail Modal (流山拆柜专属弹窗) -->
+    <!-- Modal: Pure Devanning Detail Modal -->
     <div id="devanDetailModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center hidden z-50 p-4">
         <div class="bg-slate-900 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-2xl p-4 sm:p-6 space-y-4 max-h-[85vh] flex flex-col border border-emerald-500/40">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3 sm:pb-4">
@@ -250,7 +254,7 @@
                 btnRefresh: "刷新数据",
                 todayTitle: "今日调度与拆柜实时透视板", todayDispatchTitle: "今日提柜 / 派送任务", todayDevanTitle: "今日流山仓库拆柜计划",
                 focusTitle: "明日派送预警透视板", focusJisheTitle: "【自社仓库派送】", focusWaisongTitle: "外社仓库派送",
-                calTitle: "自社车队派送/提柜日历", calSubtitle: "红字表示日本法定祝日 | 外包车队不在此日历显示",
+                calTitle: "自社车队派送/提柜日历", calSubtitle: "红字表示日本法定祝日",
                 devanTitle: "流山仓库（自社）拆柜专属日历", devanSubtitle: "专门显示送达流山自社仓库、需要在仓库进行现场拆柜作业的柜子",
                 weeks: ["周日 (日)", "周一 (月)", "周二 (火)", "周三 (水)", "周四 (木)", "周五 (金)", "周六 (土)"],
                 unit: "柜", pendingBadge: "待补柜号", modalClose: "关闭窗口",
@@ -264,7 +268,7 @@
                 btnRefresh: "更新",
                 todayTitle: "本日の配車・デバン状況", todayDispatchTitle: "本日 搬出・搬入タスク", todayDevanTitle: "本日 流山倉庫デバン計画",
                 focusTitle: "翌日 搬入アラート", focusJisheTitle: "【自社倉庫 搬入】", focusWaisongTitle: "外部倉庫・顧客直送",
-                calTitle: "自社便 配車・搬入カレンダー", calSubtitle: "赤字: 日本祝日 | 外注傭車便は非表示",
+                calTitle: "自社便 配車・搬入カレンダー", calSubtitle: "赤字: 日本祝日",
                 devanTitle: "流山倉庫 デバン専用カレンダー", devanSubtitle: "流山自社倉庫に到着し、現場でデバン作業を行うコンテナのみを表示",
                 weeks: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
                 unit: "本", pendingBadge: "番号未定", modalClose: "閉じる",
@@ -278,7 +282,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             fetchGoogleSheetData();
-            // 同期周期: 60秒 (60000ms)
             setInterval(fetchGoogleSheetData, 60000);
         });
 
@@ -420,7 +423,16 @@
             renderDevanningCalendar();
         }
 
-        // 1. 今日透视板 (精美 UI + 完全日文翻译)
+        // ⭐️ 核心：高对比度 20GP（亮黄黑字）与 40GP（亮冰蓝） Badge Class
+        function getContainerBadgeClass(type) {
+            const tUpper = String(type || '').toUpperCase();
+            if (tUpper.includes('20')) {
+                return 'badge-20gp font-mono-code font-extrabold px-1.5 py-0.2 rounded text-[10px] shadow-sm';
+            }
+            return 'badge-40gp font-mono-code font-extrabold px-1.5 py-0.2 rounded text-[10px] shadow-sm';
+        }
+
+        // 1. 今日透视板
         function renderTodayDashboard() {
             const dispatchContainer = document.getElementById('today-dispatch-container');
             const devanContainer = document.getElementById('today-devan-container');
@@ -453,7 +465,7 @@
                                 </div>
                                 <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
                                     <span>${containerNoDisplay}</span>
-                                    <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-1.5 py-0.2 rounded text-[10px] font-bold">${p.containerType}</span>
+                                    <span class="${getContainerBadgeClass(p.containerType)}">${p.containerType}</span>
                                 </div>
                                 ${addrDisplay}
                             </div>
@@ -474,7 +486,7 @@
                                 </div>
                                 <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
                                     <span>${containerNoDisplay}</span>
-                                    <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-1.5 py-0.2 rounded text-[10px] font-bold">${del.containerType}</span>
+                                    <span class="${getContainerBadgeClass(del.containerType)}">${del.containerType}</span>
                                 </div>
                                 ${addrDisplay}
                             </div>
@@ -511,7 +523,7 @@
                                 </div>
                                 <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
                                     <span>${containerNoDisplay}</span>
-                                    <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.2 rounded text-[10px] font-bold">${item.containerType}</span>
+                                    <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span>
                                 </div>
                                 ${addrDisplay}
                             </div>
@@ -563,7 +575,7 @@
                                     <span class="font-extrabold text-white text-sm">${item.customer}</span>
                                     <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/30 text-blue-300 border border-blue-500/40">[${whLabel}]</span>
                                 </div>
-                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-1.5 py-0.5 rounded text-[10px] font-bold">${item.containerType}</span></div>
+                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span></div>
                                 ${addrDisplay}
                             </div>
                         </div>`;
@@ -590,7 +602,7 @@
                                     <span class="font-extrabold text-white text-sm">${item.customer}</span>
                                     <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/30 text-amber-300 border border-amber-500/40">[${whLabel}]</span>
                                 </div>
-                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded text-[10px] font-bold">${item.containerType}</span></div>
+                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span></div>
                                 ${addrDisplay}
                             </div>
                         </div>`;
@@ -601,7 +613,7 @@
             lucide.createIcons();
         }
 
-        // 3. 车队派送日历渲染 (重构 20GP/40GP 样式)
+        // 3. 车队派送日历渲染 (极高对比度 20GP/40GP 颜色标签)
         function renderCalendar() {
             const calendarDaysDiv = document.getElementById('calendar-days');
             const monthYearLabel = document.getElementById('calendar-month-year');
@@ -615,7 +627,7 @@
                 calendarDaysDiv.innerHTML += `<div class="min-h-[110px] sm:min-h-[125px] bg-slate-900/30 border border-slate-800/50 rounded-xl sm:rounded-2xl"></div>`;
             }
 
-            const MAX_VISIBLE_TAGS = 3;
+            const MAX_VISIBLE_TAGS = 5;
             for (let d = 1; d <= lastDay.getDate(); d++) {
                 const dateStr = `${currentCalendarYear}-${String(currentCalendarMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                 
@@ -627,23 +639,30 @@
                 pickups.forEach(p => {
                     const whTag = p.warehouse ? `[${p.warehouse}]` : '[自社]';
                     const addrTooltip = p.address ? `\n地址: ${p.address}` : '';
+                    const is20gp = String(p.containerType).toUpperCase().includes('20');
+                    // 20GP 亮黄黄牌 / 40GP 冰蓝牌
+                    const badgeClass = is20gp ? 'badge-20gp font-mono-code font-black px-1 rounded text-[9px]' : 'badge-40gp font-mono-code font-black px-1 rounded text-[9px]';
+
                     eventTags.push({
-                        html: `<div class="badge-pickup px-2 py-0.5 rounded-lg text-[11px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="提柜: ${p.customer} ${whTag}${addrTooltip}">
+                        html: `<div class="bg-blue-950/80 border-l-2 border-blue-500 px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="提柜: ${p.customer} ${whTag}${addrTooltip}">
                             <div class="truncate"><span class="font-bold text-blue-300">提</span> ${p.customer}</div>
-                            <span class="text-[9px] bg-blue-500/30 text-blue-200 px-1 rounded font-mono-code font-bold border border-blue-400/30 ml-1 flex-shrink-0">${p.containerType}</span>
+                            <span class="${badgeClass} ml-1 flex-shrink-0">${p.containerType}</span>
                         </div>`
                     });
                 });
                 deliveries.forEach(del => {
                     const isJisheWh = del.warehouseType === 'JISHE';
                     const whTag = del.warehouse ? `[${del.warehouse}]` : (isJisheWh ? '[流山]' : '[外社]');
-                    const bgClass = isJisheWh ? 'bg-rose-950/70 text-rose-200 border-l-2 border-rose-500' : 'bg-amber-950/70 text-amber-200 border-l-2 border-amber-500';
+                    const bgClass = isJisheWh ? 'bg-rose-950/80 border-l-2 border-rose-500' : 'bg-amber-950/80 border-l-2 border-amber-500';
                     const addrTooltip = del.address ? `\n地址: ${del.address}` : '';
+                    
+                    const is20gp = String(del.containerType).toUpperCase().includes('20');
+                    const badgeClass = is20gp ? 'badge-20gp font-mono-code font-black px-1 rounded text-[9px]' : 'badge-40gp font-mono-code font-black px-1 rounded text-[9px]';
 
                     eventTags.push({
-                        html: `<div class="${bgClass} px-2 py-0.5 rounded-lg text-[11px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="送柜: ${del.customer} ${whTag}${addrTooltip}">
+                        html: `<div class="${bgClass} px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="送柜: ${del.customer} ${whTag}${addrTooltip}">
                             <div class="truncate"><span class="font-bold">${isJisheWh ? '自' : '外'}</span> ${del.customer}</div>
-                            <span class="text-[9px] bg-slate-900/60 px-1 rounded font-mono-code font-bold opacity-90 ml-1 flex-shrink-0">${del.containerType}</span>
+                            <span class="${badgeClass} ml-1 flex-shrink-0">${del.containerType}</span>
                         </div>`
                     });
                 });
@@ -655,7 +674,7 @@
                 let dayBgClass = holidayName ? 'bg-rose-950/30 border-rose-800/80' : 'bg-slate-900/60 border-slate-800';
 
                 let dayHtml = `
-                    <div class="min-h-[110px] sm:min-h-[125px] border rounded-xl sm:rounded-2xl p-2 flex flex-col justify-between transition hover:shadow-lg ${dayBgClass}">
+                    <div class="min-h-[110px] sm:min-h-[125px] border rounded-xl sm:rounded-2xl p-1.5 flex flex-col justify-between transition hover:shadow-lg ${dayBgClass}">
                         <div class="flex items-center justify-between border-b border-slate-800/80 pb-1 mb-1">
                             <span class="font-extrabold text-xs font-mono-code ${holidayName ? 'text-rose-400 font-black' : 'text-slate-200'}">${d}</span>
                             ${holidayName ? `<span class="text-[9px] font-bold text-rose-300 bg-rose-950/90 px-1 py-0.2 rounded border border-rose-700">${holidayName}</span>` : ''}
@@ -671,7 +690,7 @@
             }
         }
 
-        // 4. 流山拆柜专属日历渲染 (重构 20GP/40GP 样式)
+        // 4. 流山拆柜专属日历渲染 (极高对比度 20GP/40GP 颜色标签)
         function renderDevanningCalendar() {
             const calendarDaysDiv = document.getElementById('devan-calendar-days');
             const monthYearLabel = document.getElementById('devan-calendar-month-year');
@@ -685,7 +704,7 @@
                 calendarDaysDiv.innerHTML += `<div class="min-h-[110px] sm:min-h-[125px] bg-slate-900/30 border border-slate-800/50 rounded-xl sm:rounded-2xl"></div>`;
             }
 
-            const MAX_VISIBLE_TAGS = 3;
+            const MAX_VISIBLE_TAGS = 5;
             for (let d = 1; d <= lastDay.getDate(); d++) {
                 const dateStr = `${devanCalendarYear}-${String(devanCalendarMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                 
@@ -700,10 +719,14 @@
                 devanItems.forEach(item => {
                     const timeOnly = item.deliveryDate ? (item.deliveryDate.split(' ')[1] || '') : '';
                     const addrTooltip = item.address ? `\n地址: ${item.address}` : '';
+                    
+                    const is20gp = String(item.containerType).toUpperCase().includes('20');
+                    const badgeClass = is20gp ? 'badge-20gp font-mono-code font-black px-1 rounded text-[9px]' : 'badge-40gp font-mono-code font-black px-1 rounded text-[9px]';
+
                     eventTags.push({
-                        html: `<div class="badge-devanning px-2 py-0.5 rounded-lg text-[11px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDevanDetailModal('${dateStr}')" title="拆柜: ${item.customer} [${item.containerType}]${addrTooltip}">
+                        html: `<div class="bg-emerald-950/80 border-l-2 border-emerald-500 px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDevanDetailModal('${dateStr}')" title="拆柜: ${item.customer} [${item.containerType}]${addrTooltip}">
                             <div class="truncate"><span class="font-bold text-emerald-300">拆</span> ${item.customer}</div>
-                            <span class="text-[9px] bg-emerald-950/80 text-emerald-200 px-1 rounded font-mono-code font-bold border border-emerald-500/30 ml-1 flex-shrink-0">${item.containerType}</span>
+                            <span class="${badgeClass} ml-1 flex-shrink-0">${item.containerType}</span>
                         </div>`
                     });
                 });
@@ -715,7 +738,7 @@
                 let dayBgClass = holidayName ? 'bg-rose-950/30 border-rose-800/80' : 'bg-slate-900/60 border-slate-800';
 
                 let dayHtml = `
-                    <div class="min-h-[110px] sm:min-h-[125px] border rounded-xl sm:rounded-2xl p-2 flex flex-col justify-between transition hover:shadow-lg ${dayBgClass}">
+                    <div class="min-h-[110px] sm:min-h-[125px] border rounded-xl sm:rounded-2xl p-1.5 flex flex-col justify-between transition hover:shadow-lg ${dayBgClass}">
                         <div class="flex items-center justify-between border-b border-slate-800/80 pb-1 mb-1">
                             <span class="font-extrabold text-xs font-mono-code ${holidayName ? 'text-rose-400 font-black' : 'text-emerald-400'}">${d}</span>
                             ${holidayName ? `<span class="text-[9px] font-bold text-rose-300 bg-rose-950/90 px-1 py-0.2 rounded border border-rose-700">${holidayName}</span>` : ''}
@@ -731,7 +754,7 @@
             }
         }
 
-        // 车队派送明细弹窗 (补全 20GP/40GP 柜型 Badge)
+        // 车队派送明细弹窗
         function openDayDetailModal(dateStr) {
             const pickups = rawData.filter(item => item.pickupDate === dateStr && item.fleet === '自社');
             const deliveries = rawData.filter(item => item.deliveryDate && item.deliveryDate.startsWith(dateStr) && item.fleet === '自社');
@@ -752,7 +775,7 @@
                         <div class="space-y-1 w-full pr-2">
                             <div class="flex items-center space-x-2">
                                 <b class="text-white text-sm">[${t.lblPickupToday}] ${p.customer}</b>
-                                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-1.5 py-0.2 rounded text-[10px] font-mono-code font-bold">${p.containerType}</span>
+                                <span class="${getContainerBadgeClass(p.containerType)}">${p.containerType}</span>
                             </div>
                             <div class="text-slate-300 font-mono-code">${containerNoDisplay} - ${whLabel}</div>
                             ${addrDisplay}
@@ -772,7 +795,7 @@
                         <div class="space-y-1 w-full pr-2">
                             <div class="flex items-center space-x-2">
                                 <b class="text-white text-sm">[${t.lblDeliveryToday}] ${del.customer}</b>
-                                <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-1.5 py-0.2 rounded text-[10px] font-mono-code font-bold">${del.containerType}</span>
+                                <span class="${getContainerBadgeClass(del.containerType)}">${del.containerType}</span>
                             </div>
                             <div class="text-slate-300 font-mono-code">(${del.deliveryDate}) - ${containerNoDisplay}</div>
                             ${addrDisplay}
@@ -785,7 +808,7 @@
             lucide.createIcons();
         }
 
-        // 流山拆柜专属弹窗 (补全 20GP/40GP 柜型 Badge)
+        // 流山拆柜专属弹窗
         function openDevanDetailModal(dateStr) {
             const devanItems = rawData.filter(item => {
                 const targetDate = item.deliveryDate ? item.deliveryDate.split(' ')[0] : item.pickupDate;
@@ -811,7 +834,7 @@
                                 <div class="flex items-center space-x-2">
                                     <span class="bg-emerald-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">${t.lblDevanToday} ${timeOnly}</span>
                                     <b class="text-white text-sm">${item.customer}</b>
-                                    <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.2 rounded text-[10px] font-mono-code font-bold">${item.containerType}</span>
+                                    <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span>
                                 </div>
                                 <div class="text-slate-300 font-mono-code">${containerNoDisplay}</div>
                                 ${addrDisplay}
