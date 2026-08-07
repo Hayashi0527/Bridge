@@ -16,10 +16,8 @@
         .calendar-grid-wide { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
         @media (min-width: 640px) { .calendar-grid-wide { gap: 10px; } }
         
-        /* ⭐️ 强烈对比度的 20GP 与 40GP 专属样式 */
-        /* 20GP (小柜)：亮黄暖色调，极强目视感 */
+        /* 强烈对比度的 20GP 与 40GP 专属样式 */
         .badge-20gp { background-color: #f59e0b; color: #0f172a; border: 1px solid #fbbf24; }
-        /* 40GP (大柜)：高亮冰蓝冷色调 */
         .badge-40gp { background-color: rgba(14, 165, 233, 0.35); color: #38bdf8; border: 1px solid #0284c7; }
     </style>
 </head>
@@ -68,12 +66,12 @@
             </div>
             
             <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
-                <!-- 今日提柜与派送 -->
+                <!-- 今日搬出与配送 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
                         <div class="flex items-center space-x-2">
                             <span class="bg-blue-600 text-white p-1 rounded-lg"><i data-lucide="truck" class="w-4 h-4"></i></span>
-                            <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-today-dispatch-title">今日提柜 / 派送任务</h3>
+                            <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-today-dispatch-title">今日搬出 / 配送任务</h3>
                         </div>
                         <span id="badge-today-dispatch-count" class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
                     </div>
@@ -94,12 +92,12 @@
             </div>
         </section>
 
-        <!-- 2. 明日派送预警透视板 -->
+        <!-- 2. 明日配送预警透视板 -->
         <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl border border-red-500/40 overflow-hidden">
             <div class="bg-gradient-to-r from-red-600 to-rose-700 text-white px-4 sm:px-6 py-3.5 sm:py-4 flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center space-x-2.5">
                     <i data-lucide="bell" class="w-5 h-5 sm:w-6 sm:h-6 animate-bounce text-amber-300"></i>
-                    <h2 class="font-extrabold text-base sm:text-lg tracking-wide" id="i18n-focus-title">明日派送预警透视板</h2>
+                    <h2 class="font-extrabold text-base sm:text-lg tracking-wide" id="i18n-focus-title">明日配送预警透视板</h2>
                 </div>
                 <span class="text-[11px] sm:text-xs bg-red-950/60 font-bold px-3 py-0.5 sm:py-1 rounded-full text-red-200 border border-red-400/40 font-mono-code" id="tomorrow-date-label">目标预警日期: --</span>
             </div>
@@ -108,7 +106,7 @@
                 <div>
                     <div class="flex items-center space-x-2 mb-3 pb-2 border-b border-slate-700/60">
                         <span class="bg-blue-600 text-white p-1 rounded-lg"><i data-lucide="building-2" class="w-4 h-4"></i></span>
-                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-jishe-title">【自社仓库派送】</h3>
+                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-jishe-title">【自社仓库配送】</h3>
                         <span id="badge-jishe-count" class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
                     </div>
                     <div id="jishe-delivery-container"></div>
@@ -117,7 +115,7 @@
                 <div>
                     <div class="flex items-center space-x-2 mb-3 pb-2 border-b border-slate-700/60">
                         <span class="bg-amber-600 text-white p-1 rounded-lg"><i data-lucide="truck" class="w-4 h-4"></i></span>
-                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-waisong-title">外社仓库派送</h3>
+                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-waisong-title">外社仓库配送</h3>
                         <span id="badge-waisong-count" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
                     </div>
                     <div id="waisong-delivery-container"></div>
@@ -125,13 +123,13 @@
             </div>
         </section>
 
-        <!-- 3. 自社车队派送/提柜日历 -->
+        <!-- 3. 自社车队配送/搬出日历 -->
         <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-x-auto">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-700/60 pb-3.5 gap-3">
                 <div class="flex items-center space-x-3">
                     <div class="p-2 sm:p-2.5 bg-blue-500/20 text-blue-400 rounded-xl sm:rounded-2xl border border-blue-500/30"><i data-lucide="calendar" class="w-5 h-5 sm:w-6 sm:h-6"></i></div>
                     <div>
-                        <h2 class="font-extrabold text-white text-base sm:text-lg tracking-wide" id="i18n-cal-title">自社车队派送/提柜日历</h2>
+                        <h2 class="font-extrabold text-white text-base sm:text-lg tracking-wide" id="i18n-cal-title">自社车队配车・配送日历</h2>
                         <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5" id="i18n-cal-subtitle">红字表示日本法定祝日</p>
                     </div>
                 </div>
@@ -193,18 +191,20 @@
 
     </main>
 
-    <!-- Modal: General Dispatch Detail Modal -->
-    <div id="dayDetailModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center hidden z-50 p-4">
-        <div class="bg-slate-900 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-2xl p-4 sm:p-6 space-y-4 max-h-[85vh] flex flex-col border border-slate-800">
+    <!-- Modal: 【左搬出、右配送】左右双栏排版弹窗 -->
+    <div id="dayDetailModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center hidden z-50 p-2 sm:p-4">
+        <div class="bg-slate-900 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-5xl p-4 sm:p-6 space-y-4 max-h-[90vh] flex flex-col border border-slate-800">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3 sm:pb-4">
-                <h3 class="font-extrabold text-white flex items-center gap-2 text-sm sm:text-base" id="dayDetailTitle">
+                <h3 class="font-extrabold text-white flex items-center gap-2 text-base sm:text-lg" id="dayDetailTitle">
                     <i data-lucide="calendar" class="w-5 h-5 text-blue-400"></i> 当天调度明细
                 </h3>
-                <button onclick="closeDayDetailModal()" class="text-slate-400 hover:text-white p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <button onclick="closeDayDetailModal()" class="text-slate-400 hover:text-white p-1"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <div class="overflow-y-auto flex-grow space-y-3 p-1" id="dayDetailContainer"></div>
+            
+            <div class="overflow-y-auto flex-grow grid grid-cols-1 md:grid-cols-2 gap-4 p-1" id="dayDetailContainer"></div>
+            
             <div class="pt-3 border-t border-slate-800 text-right">
-                <button onclick="closeDayDetailModal()" class="px-5 py-2 bg-slate-800 text-white text-xs font-bold rounded-xl hover:bg-slate-700" id="i18n-modal-close">关闭窗口</button>
+                <button onclick="closeDayDetailModal()" class="px-6 py-2 bg-slate-800 text-white text-xs font-bold rounded-xl hover:bg-slate-700" id="i18n-modal-close">关闭窗口</button>
             </div>
         </div>
     </div>
@@ -252,30 +252,32 @@
             CN: {
                 navTitle: "集装箱物流调度透视看板", syncStatus: "实时同步 Google Sheets (JST)", syncing: "数据同步中...",
                 btnRefresh: "刷新数据",
-                todayTitle: "今日调度与拆柜实时透视板", todayDispatchTitle: "今日提柜 / 派送任务", todayDevanTitle: "今日流山仓库拆柜计划",
-                focusTitle: "明日派送预警透视板", focusJisheTitle: "【自社仓库派送】", focusWaisongTitle: "外社仓库派送",
-                calTitle: "自社车队派送/提柜日历", calSubtitle: "红字表示日本法定祝日",
+                todayTitle: "今日调度与拆柜实时透视板", todayDispatchTitle: "今日搬出 / 配送任务", todayDevanTitle: "今日流山仓库拆柜计划",
+                focusTitle: "明日配送预警透视板", focusJisheTitle: "【自社仓库配送】", focusWaisongTitle: "外社仓库配送",
+                calTitle: "自社车队配车・配送日历", calSubtitle: "红字表示日本法定祝日",
                 devanTitle: "流山仓库（自社）拆柜专属日历", devanSubtitle: "专门显示送达流山自社仓库、需要在仓库进行现场拆柜作业的柜子",
                 weeks: ["周日 (日)", "周一 (月)", "周二 (火)", "周三 (水)", "周四 (木)", "周五 (金)", "周六 (土)"],
                 unit: "柜", pendingBadge: "待补柜号", modalClose: "关闭窗口",
-                lblPickupToday: "提柜", lblDeliveryToday: "派送", lblDevanToday: "拆柜",
-                noTodayTask: "今日无提柜或派送任务", noTodayDevan: "今日流山仓库无拆柜安排",
-                noTomorrowJishe: "无自社仓库派送计划", noTomorrowWaisong: "无外送派送计划",
-                labelTodayDate: "今日日期:", labelTomorrowDate: "目标预警日期:"
+                lblPickupToday: "搬出", lblDeliveryToday: "配送", lblDevanToday: "拆柜",
+                noTodayTask: "今日无搬出或配送任务", noTodayDevan: "今日流山仓库无拆柜安排",
+                noTomorrowJishe: "无自社仓库配送计划", noTomorrowWaisong: "无外送配送计划",
+                labelTodayDate: "今日日期:", labelTomorrowDate: "目标预警日期:",
+                deliverySchedule: "预定配送"
             },
             JP: {
                 navTitle: "コンテナ配車動静管理システム", syncStatus: "Google スプレッドシート同期中 (JST)", syncing: "データ同期中...",
                 btnRefresh: "更新",
-                todayTitle: "本日の配車・デバン状況", todayDispatchTitle: "本日 搬出・搬入タスク", todayDevanTitle: "本日 流山倉庫デバン計画",
-                focusTitle: "翌日 搬入アラート", focusJisheTitle: "【自社倉庫 搬入】", focusWaisongTitle: "外部倉庫・顧客直送",
-                calTitle: "自社便 配車・搬入カレンダー", calSubtitle: "赤字: 日本祝日",
+                todayTitle: "本日の配車・デバン状況", todayDispatchTitle: "本日 搬出・配送タスク", todayDevanTitle: "本日 流山倉庫デバン計画",
+                focusTitle: "翌日 配送アラート", focusJisheTitle: "【自社倉庫 配送】", focusWaisongTitle: "外部倉庫・顧客直送",
+                calTitle: "自社便 配車・配送カレンダー", calSubtitle: "赤字: 日本祝日",
                 devanTitle: "流山倉庫 デバン専用カレンダー", devanSubtitle: "流山自社倉庫に到着し、現場でデバン作業を行うコンテナのみを表示",
                 weeks: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
                 unit: "本", pendingBadge: "番号未定", modalClose: "閉じる",
-                lblPickupToday: "搬出", lblDeliveryToday: "搬入", lblDevanToday: "デバン",
-                noTodayTask: "本日の搬出・搬入タスクはありません", noTodayDevan: "本日 流山倉庫のデバン計画はありません",
-                noTomorrowJishe: "翌日の自社倉庫搬入計画はありません", noTomorrowWaisong: "翌日の外部倉庫・直送計画はありません",
-                labelTodayDate: "本日日付:", labelTomorrowDate: "対象予告日付:"
+                lblPickupToday: "搬出", lblDeliveryToday: "配送", lblDevanToday: "デバン",
+                noTodayTask: "本日の搬出・配送タスクはありません", noTodayDevan: "本日 流山倉庫のデバン計画はありません",
+                noTomorrowJishe: "翌日の自社倉庫配送計画はありません", noTomorrowWaisong: "翌日の外部倉庫・直送計画はありません",
+                labelTodayDate: "本日日付:", labelTomorrowDate: "対象予告日付:",
+                deliverySchedule: "配送予定"
             }
         };
 
@@ -423,7 +425,6 @@
             renderDevanningCalendar();
         }
 
-        // ⭐️ 核心：高对比度 20GP（亮黄黑字）与 40GP（亮冰蓝） Badge Class
         function getContainerBadgeClass(type) {
             const tUpper = String(type || '').toUpperCase();
             if (tUpper.includes('20')) {
@@ -455,7 +456,8 @@
                 todayPickups.forEach(p => {
                     const addrDisplay = p.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-slate-500 flex-shrink-0"></i><span class="truncate">${p.address}</span></div>` : '';
                     const containerNoDisplay = p.containerNo ? p.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-                    
+                    const delDateDisplay = p.deliveryDate ? `<div class="text-[10px] text-blue-300 font-mono-code mt-0.5"><i data-lucide="clock" class="w-3 h-3 inline mr-0.5"></i>${t.deliverySchedule}: ${p.deliveryDate}</div>` : '';
+
                     html += `
                         <div class="bg-slate-800/80 border border-blue-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
                             <div class="space-y-1 w-full pr-2">
@@ -468,6 +470,7 @@
                                     <span class="${getContainerBadgeClass(p.containerType)}">${p.containerType}</span>
                                 </div>
                                 ${addrDisplay}
+                                ${delDateDisplay}
                             </div>
                             <span class="text-[10px] font-bold text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-800 flex-shrink-0">${p.fleet}</span>
                         </div>`;
@@ -536,7 +539,7 @@
             lucide.createIcons();
         }
 
-        // 2. 明日预警透视板
+        // 2. 明日预警透视板 (⭐️ 已追加车队为自社的要求)
         function renderTomorrowFocus() {
             const jisheContainer = document.getElementById('jishe-delivery-container');
             const waisongContainer = document.getElementById('waisong-delivery-container');
@@ -551,7 +554,9 @@
             }
 
             const tomorrowItems = rawData.filter(d => d.deliveryDate && d.deliveryDate.startsWith(tomorrowDateStr));
-            const jisheItems = tomorrowItems.filter(d => d.warehouseType === 'JISHE');
+            
+            // ⭐️ 过滤：必须仓库是 JISHE 且车队也是自社
+            const jisheItems = tomorrowItems.filter(d => d.warehouseType === 'JISHE' && d.fleet === '自社');
             const waisongItems = tomorrowItems.filter(d => d.warehouseType === 'WAISONG');
 
             document.getElementById('badge-jishe-count').innerText = `${jisheItems.length} ${t.unit}`;
@@ -613,7 +618,7 @@
             lucide.createIcons();
         }
 
-        // 3. 车队派送日历渲染 (极高对比度 20GP/40GP 颜色标签)
+        // 3. 车队派送日历渲染
         function renderCalendar() {
             const calendarDaysDiv = document.getElementById('calendar-days');
             const monthYearLabel = document.getElementById('calendar-month-year');
@@ -640,12 +645,11 @@
                     const whTag = p.warehouse ? `[${p.warehouse}]` : '[自社]';
                     const addrTooltip = p.address ? `\n地址: ${p.address}` : '';
                     const is20gp = String(p.containerType).toUpperCase().includes('20');
-                    // 20GP 亮黄黄牌 / 40GP 冰蓝牌
                     const badgeClass = is20gp ? 'badge-20gp font-mono-code font-black px-1 rounded text-[9px]' : 'badge-40gp font-mono-code font-black px-1 rounded text-[9px]';
 
                     eventTags.push({
-                        html: `<div class="bg-blue-950/80 border-l-2 border-blue-500 px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="提柜: ${p.customer} ${whTag}${addrTooltip}">
-                            <div class="truncate"><span class="font-bold text-blue-300">提</span> ${p.customer}</div>
+                        html: `<div class="bg-blue-950/80 border-l-2 border-blue-500 px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="搬出: ${p.customer} ${whTag}${addrTooltip}">
+                            <div class="truncate"><span class="font-bold text-blue-300">搬</span> ${p.customer}</div>
                             <span class="${badgeClass} ml-1 flex-shrink-0">${p.containerType}</span>
                         </div>`
                     });
@@ -660,7 +664,7 @@
                     const badgeClass = is20gp ? 'badge-20gp font-mono-code font-black px-1 rounded text-[9px]' : 'badge-40gp font-mono-code font-black px-1 rounded text-[9px]';
 
                     eventTags.push({
-                        html: `<div class="${bgClass} px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="送柜: ${del.customer} ${whTag}${addrTooltip}">
+                        html: `<div class="${bgClass} px-1.5 py-0.5 rounded text-[10px] font-medium truncate shadow-sm cursor-pointer flex items-center justify-between" onclick="openDayDetailModal('${dateStr}')" title="配送: ${del.customer} ${whTag}${addrTooltip}">
                             <div class="truncate"><span class="font-bold">${isJisheWh ? '自' : '外'}</span> ${del.customer}</div>
                             <span class="${badgeClass} ml-1 flex-shrink-0">${del.containerType}</span>
                         </div>`
@@ -690,7 +694,7 @@
             }
         }
 
-        // 4. 流山拆柜专属日历渲染 (极高对比度 20GP/40GP 颜色标签)
+        // 4. 流山拆柜专属日历渲染
         function renderDevanningCalendar() {
             const calendarDaysDiv = document.getElementById('devan-calendar-days');
             const monthYearLabel = document.getElementById('devan-calendar-month-year');
@@ -754,7 +758,7 @@
             }
         }
 
-        // 车队派送明细弹窗
+        // 弹窗明细渲染
         function openDayDetailModal(dateStr) {
             const pickups = rawData.filter(item => item.pickupDate === dateStr && item.fleet === '自社');
             const deliveries = rawData.filter(item => item.deliveryDate && item.deliveryDate.startsWith(dateStr) && item.fleet === '自社');
@@ -764,14 +768,23 @@
             const container = document.getElementById('dayDetailContainer');
             container.innerHTML = '';
             
-            if (pickups.length > 0) {
-                container.innerHTML += `<div class="font-bold text-blue-400 text-xs border-b border-slate-800 pb-1">【${t.lblPickupToday}】(${pickups.length} ${t.unit})</div>`;
+            // 左栏：搬出列表
+            let pickupColumnHtml = `<div class="space-y-2.5">
+                <div class="font-extrabold text-blue-400 text-xs sm:text-sm border-b border-blue-500/30 pb-2 flex items-center justify-between">
+                    <span>【${t.lblPickupToday}】</span>
+                    <span class="bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full font-mono-code text-xs">${pickups.length} ${t.unit}</span>
+                </div>`;
+            
+            if (pickups.length === 0) {
+                pickupColumnHtml += `<p class="text-xs text-slate-500 italic p-3">无搬出计划</p>`;
+            } else {
                 pickups.forEach(p => {
                     const whLabel = p.warehouse ? p.warehouse : '流山倉庫';
                     const addrDisplay = p.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400 flex-shrink-0"></i><span>${p.address}</span></div>` : '';
                     const containerNoDisplay = p.containerNo ? p.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
+                    const delScheduleDisplay = p.deliveryDate ? `<div class="text-[11px] text-blue-300 font-mono-code font-semibold mt-1 flex items-center gap-1 bg-blue-950/60 p-1.5 rounded-lg border border-blue-800/40"><i data-lucide="clock" class="w-3.5 h-3.5 text-blue-400 flex-shrink-0"></i><span>${t.deliverySchedule}: ${p.deliveryDate}</span></div>` : '';
 
-                    container.innerHTML += `<div class="bg-slate-800/80 border border-blue-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
+                    pickupColumnHtml += `<div class="bg-slate-800/80 border border-blue-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
                         <div class="space-y-1 w-full pr-2">
                             <div class="flex items-center space-x-2">
                                 <b class="text-white text-sm">[${t.lblPickupToday}] ${p.customer}</b>
@@ -779,19 +792,30 @@
                             </div>
                             <div class="text-slate-300 font-mono-code">${containerNoDisplay} - ${whLabel}</div>
                             ${addrDisplay}
+                            ${delScheduleDisplay}
                         </div>
                         <span class="font-bold px-2 py-0.5 rounded text-[10px] bg-blue-500/30 text-blue-300 border border-blue-500/40 flex-shrink-0">${whLabel}</span>
                     </div>`;
                 });
             }
-            if (deliveries.length > 0) {
-                container.innerHTML += `<div class="font-bold text-rose-400 text-xs border-b border-slate-800 pb-1 pt-2">【${t.lblDeliveryToday}】(${deliveries.length} ${t.unit})</div>`;
+            pickupColumnHtml += `</div>`;
+
+            // 右栏：配送列表
+            let deliveryColumnHtml = `<div class="space-y-2.5">
+                <div class="font-extrabold text-rose-400 text-xs sm:text-sm border-b border-rose-500/30 pb-2 flex items-center justify-between">
+                    <span>【${t.lblDeliveryToday}】</span>
+                    <span class="bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full font-mono-code text-xs">${deliveries.length} ${t.unit}</span>
+                </div>`;
+
+            if (deliveries.length === 0) {
+                deliveryColumnHtml += `<p class="text-xs text-slate-500 italic p-3">无配送计划</p>`;
+            } else {
                 deliveries.forEach(del => {
                     const whLabel = del.warehouse ? del.warehouse : (del.warehouseType === 'JISHE' ? '流山倉庫' : '外社倉庫');
                     const addrDisplay = del.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-400 flex-shrink-0"></i><span>${del.address}</span></div>` : '';
                     const containerNoDisplay = del.containerNo ? del.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
 
-                    container.innerHTML += `<div class="bg-slate-800/80 border border-rose-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
+                    deliveryColumnHtml += `<div class="bg-slate-800/80 border border-rose-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
                         <div class="space-y-1 w-full pr-2">
                             <div class="flex items-center space-x-2">
                                 <b class="text-white text-sm">[${t.lblDeliveryToday}] ${del.customer}</b>
@@ -804,6 +828,10 @@
                     </div>`;
                 });
             }
+            deliveryColumnHtml += `</div>`;
+
+            container.innerHTML = pickupColumnHtml + deliveryColumnHtml;
+
             document.getElementById('dayDetailModal').classList.remove('hidden');
             lucide.createIcons();
         }
