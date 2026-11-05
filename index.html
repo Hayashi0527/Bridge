@@ -52,78 +52,10 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
+    <!-- Main Content Container: 仅保留两大核心日历 -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8">
 
-        <!-- 1. 今日实时透视板 -->
-        <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl border border-blue-500/40 overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white px-4 sm:px-6 py-3.5 sm:py-4 flex flex-wrap items-center justify-between gap-2">
-                <div class="flex items-center space-x-2.5">
-                    <i data-lucide="zap" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 animate-pulse"></i>
-                    <h2 class="font-extrabold text-base sm:text-lg tracking-wide" id="i18n-today-title">今日调度与拆柜实时透视板</h2>
-                </div>
-                <span class="text-[11px] sm:text-xs bg-slate-950/60 font-bold px-3 py-0.5 sm:py-1 rounded-full text-blue-200 border border-blue-400/40 font-mono-code" id="today-date-label">今日日期: --</span>
-            </div>
-            
-            <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
-                <!-- 今日搬出与配送 -->
-                <div class="space-y-3 sm:space-y-4">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-blue-600 text-white p-1 rounded-lg"><i data-lucide="truck" class="w-4 h-4"></i></span>
-                            <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-today-dispatch-title">今日搬出 / 配送任务</h3>
-                        </div>
-                        <span id="badge-today-dispatch-count" class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
-                    </div>
-                    <div id="today-dispatch-container" class="space-y-2"></div>
-                </div>
-
-                <!-- 今日流山拆柜 -->
-                <div class="space-y-3 sm:space-y-4">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-emerald-600 text-white p-1 rounded-lg"><i data-lucide="package-open" class="w-4 h-4"></i></span>
-                            <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-today-devan-title">今日流山仓库拆柜计划</h3>
-                        </div>
-                        <span id="badge-today-devan-count" class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
-                    </div>
-                    <div id="today-devan-container" class="space-y-2"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 明日配送预警透视板 -->
-        <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl border border-red-500/40 overflow-hidden">
-            <div class="bg-gradient-to-r from-red-600 to-rose-700 text-white px-4 sm:px-6 py-3.5 sm:py-4 flex flex-wrap items-center justify-between gap-2">
-                <div class="flex items-center space-x-2.5">
-                    <i data-lucide="bell" class="w-5 h-5 sm:w-6 sm:h-6 animate-bounce text-amber-300"></i>
-                    <h2 class="font-extrabold text-base sm:text-lg tracking-wide" id="i18n-focus-title">明日配送预警透视板</h2>
-                </div>
-                <span class="text-[11px] sm:text-xs bg-red-950/60 font-bold px-3 py-0.5 sm:py-1 rounded-full text-red-200 border border-red-400/40 font-mono-code" id="tomorrow-date-label">目标预警日期: --</span>
-            </div>
-            
-            <div class="p-4 sm:p-6 space-y-5 sm:space-y-6">
-                <div>
-                    <div class="flex items-center space-x-2 mb-3 pb-2 border-b border-slate-700/60">
-                        <span class="bg-blue-600 text-white p-1 rounded-lg"><i data-lucide="building-2" class="w-4 h-4"></i></span>
-                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-jishe-title">【自社仓库配送】</h3>
-                        <span id="badge-jishe-count" class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
-                    </div>
-                    <div id="jishe-delivery-container"></div>
-                </div>
-
-                <div>
-                    <div class="flex items-center space-x-2 mb-3 pb-2 border-b border-slate-700/60">
-                        <span class="bg-amber-600 text-white p-1 rounded-lg"><i data-lucide="truck" class="w-4 h-4"></i></span>
-                        <h3 class="font-extrabold text-slate-200 text-sm sm:text-base" id="i18n-focus-waisong-title">外社仓库配送</h3>
-                        <span id="badge-waisong-count" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full font-mono-code">0 柜</span>
-                    </div>
-                    <div id="waisong-delivery-container"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 自社车队配送/搬出日历 -->
+        <!-- 1. 自社车队配送/搬出日历 -->
         <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-x-auto">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-700/60 pb-3.5 gap-3">
                 <div class="flex items-center space-x-3">
@@ -156,7 +88,7 @@
             </div>
         </section>
 
-        <!-- 4. 流山仓库（自社）拆柜专属日历 -->
+        <!-- 2. 流山仓库（自社）拆柜专属日历 -->
         <section class="glass-card-dark rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 space-y-4 sm:space-y-5 border border-emerald-500/30 overflow-x-auto">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-700/60 pb-3.5 gap-3">
                 <div class="flex items-center space-x-3">
@@ -238,9 +170,6 @@
         let devanCalendarYear = new Date().getFullYear();
         let devanCalendarMonth = new Date().getMonth();
 
-        let todayDateStr = "";
-        let tomorrowDateStr = "";
-
         const japanHolidays = {
             "2026-01-01": "元日", "2026-01-12": "成人の日", "2026-02-11": "建国記念の日", "2026-02-23": "天皇誕生日",
             "2026-03-20": "春分の日", "2026-04-29": "昭和の日", "2026-05-03": "憲法記念日", "2026-05-04": "みどもの日",
@@ -252,31 +181,23 @@
             CN: {
                 navTitle: "集装箱物流调度透视看板", syncStatus: "实时同步 Google Sheets (JST)", syncing: "数据同步中...",
                 btnRefresh: "刷新数据",
-                todayTitle: "今日调度与拆柜实时透视板", todayDispatchTitle: "今日搬出 / 配送任务", todayDevanTitle: "今日流山仓库拆柜计划",
-                focusTitle: "明日配送预警透视板", focusJisheTitle: "【自社仓库配送】", focusWaisongTitle: "外社仓库配送",
                 calTitle: "自社车队配车・配送日历", calSubtitle: "红字表示日本法定祝日",
                 devanTitle: "流山仓库（自社）拆柜专属日历", devanSubtitle: "专门显示送达流山自社仓库、需要在仓库进行现场拆柜作业的柜子",
                 weeks: ["周日 (日)", "周一 (月)", "周二 (火)", "周三 (水)", "周四 (木)", "周五 (金)", "周六 (土)"],
                 unit: "柜", pendingBadge: "待补柜号", modalClose: "关闭窗口",
                 lblPickupToday: "搬出", lblDeliveryToday: "配送", lblDevanToday: "拆柜",
-                noTodayTask: "今日无搬出或配送任务", noTodayDevan: "今日流山仓库无拆柜安排",
-                noTomorrowJishe: "无自社仓库配送计划", noTomorrowWaisong: "无外送配送计划",
-                labelTodayDate: "今日日期:", labelTomorrowDate: "目标预警日期:",
+                noTodayDevan: "当天无流山仓库拆柜安排",
                 deliverySchedule: "预定配送"
             },
             JP: {
                 navTitle: "コンテナ配車動静管理システム", syncStatus: "Google スプレッドシート同期中 (JST)", syncing: "データ同期中...",
                 btnRefresh: "更新",
-                todayTitle: "本日の配車・デバン状況", todayDispatchTitle: "本日 搬出・配送タスク", todayDevanTitle: "本日 流山倉庫デバン計画",
-                focusTitle: "翌日 配送アラート", focusJisheTitle: "【自社倉庫 配送】", focusWaisongTitle: "外部倉庫・顧客直送",
                 calTitle: "自社便 配車・配送カレンダー", calSubtitle: "赤字: 日本祝日",
                 devanTitle: "流山倉庫 デバン専用カレンダー", devanSubtitle: "流山自社倉庫に到着し、現場でデバン作業を行うコンテナのみを表示",
                 weeks: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
                 unit: "本", pendingBadge: "番号未定", modalClose: "閉じる",
                 lblPickupToday: "搬出", lblDeliveryToday: "配送", lblDevanToday: "デバン",
-                noTodayTask: "本日の搬出・配送タスクはありません", noTodayDevan: "本日 流山倉庫のデバン計画はありません",
-                noTomorrowJishe: "翌日の自社倉庫配送計画はありません", noTomorrowWaisong: "翌日の外部倉庫・直送計画はありません",
-                labelTodayDate: "本日日付:", labelTomorrowDate: "対象予告日付:",
+                noTodayDevan: "当日の流山倉庫デバン計画はありません",
                 deliverySchedule: "配送予定"
             }
         };
@@ -357,26 +278,10 @@
 
                 if (isFirstLoad) {
                     const realToday = new Date();
-                    const realYear = realToday.getFullYear();
-                    const realMonth = realToday.getMonth();
-
-                    currentCalendarYear = realYear;
-                    currentCalendarMonth = realMonth;
-                    devanCalendarYear = realYear;
-                    devanCalendarMonth = realMonth;
-
-                    const ty = realYear;
-                    const tm = String(realMonth + 1).padStart(2, '0');
-                    const td = String(realToday.getDate()).padStart(2, '0');
-                    todayDateStr = `${ty}-${tm}-${td}`;
-
-                    const realTomorrow = new Date(realToday);
-                    realTomorrow.setDate(realToday.getDate() + 1);
-                    const tmy = realTomorrow.getFullYear();
-                    const tmm = String(realTomorrow.getMonth() + 1).padStart(2, '0');
-                    const tmd = String(realTomorrow.getDate()).padStart(2, '0');
-                    tomorrowDateStr = `${tmy}-${tmm}-${tmd}`;
-
+                    currentCalendarYear = realToday.getFullYear();
+                    currentCalendarMonth = realToday.getMonth();
+                    devanCalendarYear = realToday.getFullYear();
+                    devanCalendarMonth = realToday.getMonth();
                     isFirstLoad = false;
                 }
 
@@ -400,12 +305,6 @@
             document.getElementById('i18n-nav-title').innerText = t.navTitle;
             document.getElementById('sync-status').innerText = t.syncStatus;
             document.getElementById('i18n-btn-refresh').innerText = t.btnRefresh;
-            document.getElementById('i18n-today-title').innerText = t.todayTitle;
-            document.getElementById('i18n-today-dispatch-title').innerText = t.todayDispatchTitle;
-            document.getElementById('i18n-today-devan-title').innerText = t.todayDevanTitle;
-            document.getElementById('i18n-focus-title').innerText = t.focusTitle;
-            document.getElementById('i18n-focus-jishe-title').innerText = t.focusJisheTitle;
-            document.getElementById('i18n-focus-waisong-title').innerText = t.focusWaisongTitle;
             document.getElementById('i18n-cal-title').innerText = t.calTitle;
             document.getElementById('i18n-cal-subtitle').innerText = t.calSubtitle;
             document.getElementById('i18n-devan-title').innerText = t.devanTitle;
@@ -419,8 +318,6 @@
         }
 
         function initDashboard() {
-            renderTodayDashboard();
-            renderTomorrowFocus();
             renderCalendar();
             renderDevanningCalendar();
         }
@@ -433,192 +330,7 @@
             return 'badge-40gp font-mono-code font-extrabold px-1.5 py-0.2 rounded text-[10px] shadow-sm';
         }
 
-        // 1. 今日透视板
-        function renderTodayDashboard() {
-            const dispatchContainer = document.getElementById('today-dispatch-container');
-            const devanContainer = document.getElementById('today-devan-container');
-            const t = i18nText[currentLang];
-
-            document.getElementById('today-date-label').innerText = `${t.labelTodayDate} ${todayDateStr || '--'}`;
-
-            if (!todayDateStr) return;
-
-            const todayPickups = rawData.filter(d => d.pickupDate === todayDateStr);
-            const todayDeliveries = rawData.filter(d => d.deliveryDate && d.deliveryDate.startsWith(todayDateStr));
-            const totalDispatch = todayPickups.length + todayDeliveries.length;
-
-            document.getElementById('badge-today-dispatch-count').innerText = `${totalDispatch} ${t.unit}`;
-
-            if (totalDispatch === 0) {
-                dispatchContainer.innerHTML = `<p class="text-xs text-slate-500 italic p-3">${t.noTodayTask}</p>`;
-            } else {
-                let html = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">`;
-                todayPickups.forEach(p => {
-                    const addrDisplay = p.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-slate-500 flex-shrink-0"></i><span class="truncate">${p.address}</span></div>` : '';
-                    const containerNoDisplay = p.containerNo ? p.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-                    const delDateDisplay = p.deliveryDate ? `<div class="text-[10px] text-blue-300 font-mono-code mt-0.5"><i data-lucide="clock" class="w-3 h-3 inline mr-0.5"></i>${t.deliverySchedule}: ${p.deliveryDate}</div>` : '';
-
-                    html += `
-                        <div class="bg-slate-800/80 border border-blue-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
-                            <div class="space-y-1 w-full pr-2">
-                                <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
-                                    <span class="bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">${t.lblPickupToday}</span>
-                                    <b class="text-white text-sm">${p.customer}</b>
-                                </div>
-                                <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
-                                    <span>${containerNoDisplay}</span>
-                                    <span class="${getContainerBadgeClass(p.containerType)}">${p.containerType}</span>
-                                </div>
-                                ${addrDisplay}
-                                ${delDateDisplay}
-                            </div>
-                            <span class="text-[10px] font-bold text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-800 flex-shrink-0">${p.fleet}</span>
-                        </div>`;
-                });
-                todayDeliveries.forEach(del => {
-                    const timeOnly = del.deliveryDate.split(' ')[1] || '';
-                    const addrDisplay = del.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-slate-500 flex-shrink-0"></i><span class="truncate">${del.address}</span></div>` : '';
-                    const containerNoDisplay = del.containerNo ? del.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-
-                    html += `
-                        <div class="bg-slate-800/80 border border-rose-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
-                            <div class="space-y-1 w-full pr-2">
-                                <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
-                                    <span class="bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">${t.lblDeliveryToday} ${timeOnly}</span>
-                                    <b class="text-white text-sm">${del.customer}</b>
-                                </div>
-                                <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
-                                    <span>${containerNoDisplay}</span>
-                                    <span class="${getContainerBadgeClass(del.containerType)}">${del.containerType}</span>
-                                </div>
-                                ${addrDisplay}
-                            </div>
-                            <span class="text-[10px] font-bold text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800 flex-shrink-0">${del.warehouse || '自社'}</span>
-                        </div>`;
-                });
-                html += `</div>`;
-                dispatchContainer.innerHTML = html;
-            }
-
-            // 今日流山拆柜
-            const todayDevanItems = rawData.filter(d => {
-                const targetDate = d.deliveryDate ? d.deliveryDate.split(' ')[0] : d.pickupDate;
-                return targetDate === todayDateStr && d.warehouseType === 'JISHE';
-            });
-
-            document.getElementById('badge-today-devan-count').innerText = `${todayDevanItems.length} ${t.unit}`;
-
-            if (todayDevanItems.length === 0) {
-                devanContainer.innerHTML = `<p class="text-xs text-slate-500 italic p-3">${t.noTodayDevan}</p>`;
-            } else {
-                let html = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">`;
-                todayDevanItems.forEach(item => {
-                    const timeOnly = item.deliveryDate ? (item.deliveryDate.split(' ')[1] || '') : '';
-                    const addrDisplay = item.address ? `<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-emerald-500/80 flex-shrink-0"></i><span class="truncate">${item.address}</span></div>` : '';
-                    const containerNoDisplay = item.containerNo ? item.containerNo : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-
-                    html += `
-                        <div class="bg-slate-800/80 border border-emerald-500/30 rounded-xl p-3 text-xs flex justify-between items-start shadow-md">
-                            <div class="space-y-1 w-full pr-2">
-                                <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
-                                    <span class="bg-emerald-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">${t.lblDevanToday} ${timeOnly}</span>
-                                    <b class="text-white text-sm">${item.customer}</b>
-                                </div>
-                                <div class="text-[11px] text-slate-300 font-mono-code flex items-center gap-1.5 mt-1">
-                                    <span>${containerNoDisplay}</span>
-                                    <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span>
-                                </div>
-                                ${addrDisplay}
-                            </div>
-                            <span class="text-[10px] font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800 flex-shrink-0">流山倉庫</span>
-                        </div>`;
-                });
-                html += `</div>`;
-                devanContainer.innerHTML = html;
-            }
-            lucide.createIcons();
-        }
-
-        // 2. 明日预警透视板 (⭐️ 已追加车队为自社的要求)
-        function renderTomorrowFocus() {
-            const jisheContainer = document.getElementById('jishe-delivery-container');
-            const waisongContainer = document.getElementById('waisong-delivery-container');
-            const t = i18nText[currentLang];
-
-            document.getElementById('tomorrow-date-label').innerText = `${t.labelTomorrowDate} ${tomorrowDateStr || '--'}`;
-
-            if (!tomorrowDateStr) {
-                jisheContainer.innerHTML = `<p class="text-xs text-slate-500 italic">${t.noTomorrowJishe}</p>`;
-                waisongContainer.innerHTML = `<p class="text-xs text-slate-500 italic">${t.noTomorrowWaisong}</p>`;
-                return;
-            }
-
-            const tomorrowItems = rawData.filter(d => d.deliveryDate && d.deliveryDate.startsWith(tomorrowDateStr));
-            
-            // ⭐️ 过滤：必须仓库是 JISHE 且车队也是自社
-            const jisheItems = tomorrowItems.filter(d => d.warehouseType === 'JISHE' && d.fleet === '自社');
-            const waisongItems = tomorrowItems.filter(d => d.warehouseType === 'WAISONG');
-
-            document.getElementById('badge-jishe-count').innerText = `${jisheItems.length} ${t.unit}`;
-            document.getElementById('badge-waisong-count').innerText = `${waisongItems.length} ${t.unit}`;
-
-            if (jisheItems.length === 0) {
-                jisheContainer.innerHTML = `<p class="text-xs text-slate-500 italic">${tomorrowDateStr} ${t.noTomorrowJishe}</p>`;
-            } else {
-                let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">`;
-                jisheItems.forEach(item => {
-                    const timeOnly = item.deliveryDate.split(' ')[1] || '';
-                    const containerDisplay = item.containerNo ? `${item.containerNo}` : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-                    const whLabel = item.warehouse || '流山倉庫';
-                    const addrDisplay = item.address ? `<div class="text-xs text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400 flex-shrink-0"></i><span class="truncate">${item.address}</span></div>` : '';
-                    
-                    html += `
-                        <div class="bg-slate-800/80 border border-blue-500/30 rounded-2xl p-4 flex justify-between items-start shadow-md">
-                            <div class="space-y-1.5 w-full">
-                                <div class="flex items-center space-x-2">
-                                    <span class="bg-blue-600 text-white font-bold px-2 py-0.5 rounded-md text-[10px] font-mono-code">${timeOnly}</span>
-                                    <span class="font-extrabold text-white text-sm">${item.customer}</span>
-                                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/30 text-blue-300 border border-blue-500/40">[${whLabel}]</span>
-                                </div>
-                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span></div>
-                                ${addrDisplay}
-                            </div>
-                        </div>`;
-                });
-                html += `</div>`;
-                jisheContainer.innerHTML = html;
-            }
-
-            if (waisongItems.length === 0) {
-                waisongContainer.innerHTML = `<p class="text-xs text-slate-500 italic">${tomorrowDateStr} ${t.noTomorrowWaisong}</p>`;
-            } else {
-                let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">`;
-                waisongItems.forEach(item => {
-                    const timeOnly = item.deliveryDate.split(' ')[1] || '';
-                    const containerDisplay = item.containerNo ? `${item.containerNo}` : `<span class="text-amber-400 font-bold">[${t.pendingBadge}]</span>`;
-                    const whLabel = item.warehouse || '外社倉庫';
-                    const addrDisplay = item.address ? `<div class="text-xs text-slate-400 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400 flex-shrink-0"></i><span class="truncate">${item.address}</span></div>` : '';
-
-                    html += `
-                        <div class="bg-slate-800/80 border border-amber-500/30 rounded-2xl p-4 flex justify-between items-start shadow-md">
-                            <div class="space-y-1.5 w-full">
-                                <div class="flex items-center space-x-2">
-                                    <span class="bg-amber-600 text-white font-bold px-2 py-0.5 rounded-md text-[10px] font-mono-code">${timeOnly}</span>
-                                    <span class="font-extrabold text-white text-sm">${item.customer}</span>
-                                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/30 text-amber-300 border border-amber-500/40">[${whLabel}]</span>
-                                </div>
-                                <div class="text-xs text-slate-300 font-mono-code flex items-center gap-2">${containerDisplay} <span class="${getContainerBadgeClass(item.containerType)}">${item.containerType}</span></div>
-                                ${addrDisplay}
-                            </div>
-                        </div>`;
-                });
-                html += `</div>`;
-                waisongContainer.innerHTML = html;
-            }
-            lucide.createIcons();
-        }
-
-        // 3. 车队派送日历渲染
+        // 1. 车队派送日历渲染
         function renderCalendar() {
             const calendarDaysDiv = document.getElementById('calendar-days');
             const monthYearLabel = document.getElementById('calendar-month-year');
@@ -694,7 +406,7 @@
             }
         }
 
-        // 4. 流山拆柜专属日历渲染
+        // 2. 流山拆柜专属日历渲染
         function renderDevanningCalendar() {
             const calendarDaysDiv = document.getElementById('devan-calendar-days');
             const monthYearLabel = document.getElementById('devan-calendar-month-year');
@@ -758,7 +470,7 @@
             }
         }
 
-        // 弹窗明细渲染
+        // 弹窗明细渲染（左右双栏）
         function openDayDetailModal(dateStr) {
             const pickups = rawData.filter(item => item.pickupDate === dateStr && item.fleet === '自社');
             const deliveries = rawData.filter(item => item.deliveryDate && item.deliveryDate.startsWith(dateStr) && item.fleet === '自社');
